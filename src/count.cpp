@@ -15,7 +15,5 @@ int count(int num1, int num2) {
 	if (num1 == 0)return -1;
 	if (num2 == 0)return 0;
 	if (num1 > num2)return 1;
-	int x = 0;
-	if (num2%num1 == 0)x = 1;
-	return (num2 - num1 - 1) /num1 + 1+x;
+	return (num2 - num1 - 1) /num1 + 1+ ((num2%num1 == 0)?1:0);
 }
