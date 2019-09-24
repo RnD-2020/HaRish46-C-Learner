@@ -20,17 +20,17 @@ There are no test cases for fraction method but it would be good if you complete
 int decimalToOctal(int num)
 {
 	if (num < 0)return 0;
-	int a = 0;
-	while (pow(8, a++) < num);
+	int a = 1;
+	while (a< num)a*=8;
 	
 	int b = 0;
 	while (num) {
 		b *= 10;
-		b += num/(int)pow(8, a);
-		num %= (int)pow(8, a);
-		a--;
+		b += num/(int)a;
+		num %= (int)a;
+		a/=8;
 	}
-	if (a == 0)b *= 10;
+	if (a == 1)b *= 10;
 	return b;
 }
 
