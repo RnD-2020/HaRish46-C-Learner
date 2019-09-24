@@ -21,23 +21,24 @@ There are no test cases for fraction method but it would be good if you complete
 int octalToHexadecimal(long int num)
 {
 	if (num <= 0)return 0;
-	long int n = 0, i = 0, x;
+	long int n = 0, i = 1, x;
 	while (num) {
 		x = num % 10;
-		n += x*pow(8, i);
-		num /= 10;i++;
+		n += x*i;
+		num /= 10;
+		i *= 8;
 	}
-	int a = 0;
-	while (pow(16, a++) < n);
+	int a = 1;
+	while (a < n)a*=16;
 
 	int b = 0;
 	while (n) {
 		b *= 10;
-		b += n / (int)pow(16, a);
-		n %= (int)pow(16, a);
-		a--;
+		b += n / (int)a;
+		n %= (int)a;
+		a/=16;
 	}
-	if (a == 0)b *= 10;
+	if (a == 1)b *= 10;
 	return b;
 }
 
