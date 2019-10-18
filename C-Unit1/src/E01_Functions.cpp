@@ -21,9 +21,7 @@
 //
 using namespace std;
 int midPoint(int x1, int x2) {
-	//cout << x1;
-	
-    return x1/2+x2/2+((x1%2!=0 &&x2%2!=0)?1:0);
+    return (x1+x2)/2;
 }
 
 //
