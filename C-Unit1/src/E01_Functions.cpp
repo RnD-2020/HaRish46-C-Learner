@@ -30,6 +30,12 @@ int midPoint(int x1, int x2) {
 int sumOfMSDs(int num1, int num2) {
 	int a, b;
 	a = b = 0;
+	while (num1&&num2) {
+		a = num1;
+		b = num2;
+		num2 /= 10;
+		num1 /= 10;
+	}
 	while (num1) {
 		a = num1;
 		num1 /= 10;
