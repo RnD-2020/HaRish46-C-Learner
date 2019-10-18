@@ -131,8 +131,8 @@ int reverseOfNumberByByte(int n) {
 
 static void three_things_i_learnt() {
     /*
-     -
-     -
-     -
+     -XOR of two numbers in any way gives the same result.
+     -XOR of a number even times gives result as zero.
+     -different types of bit operations.
      */
 }
