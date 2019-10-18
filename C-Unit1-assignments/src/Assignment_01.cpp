@@ -23,13 +23,27 @@ Note:
 
 
 
-void reverse(char butterfly[], char temp[]) {
+void reverse(char butterfly[],int i) {
+	char temp[24];
 	int i;
 	for (i = 0;butterfly[i] != '\0';i++);
 	int j = 0;
 	while (i) {
 		temp[j++] = butterfly[--i];
 	}temp[j] = '\0';
+	for (int j = 0;temp[j] != '\0';j++) {
+		butterfly[i++] = temp[j];
+	}
+	butterfly[i] = '\0';
+}
+int lengthAndReverse(int *x,int *r){
+	int l=0;
+	while (*x) {
+		*r *= 10;
+		*r += *x % 10;
+		*x = *x / 10;
+		l++;
+	}return l;
 }
 void butterflyNumber(int n, char butterfly[23]) {
 	long i = 0;
@@ -42,34 +56,19 @@ void butterflyNumber(int n, char butterfly[23]) {
 	long l = 0;
 	if (n < 0) {
 		butterfly[0] = '-';
-		i++;//l++;
-	}
-	//printf("%d ",n);
-	if (n<0)
+		i++;
 		x = -n;
-	else x = n;
+	}
 	long r = 0;
-	while (x) {
-		r *= 10;
-		r += x % 10;
-		//printf("%d\n",r);
-		x = x / 10;l++;
-		//printf("%d ",x);
-	}
-	long t = l;//printf("%d ",l);
-
+	long t=lengthAndReverse(&x,&r);
 	while (r || t) {
-		//printf("%d %d %c \n",r,(r % 10),'0' + (r % 10));
 		butterfly[i++] = '0' + (r % 10);
-		r = r / 10;t--;
+		r = r / 10;
+		t--;
 	}
 	butterfly[i] = '\0';
-	char temp[24];
-	reverse(butterfly, temp);
-	for (int j = 0;temp[j] != '\0';j++) {
-		butterfly[i++] = temp[j];
-	}
-	butterfly[i] = '\0';
+	reverse(butterfly,i);
+	
 }
 
 
