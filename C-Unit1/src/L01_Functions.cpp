@@ -67,7 +67,9 @@ int numberOfPrimeFactors(int n) {
         while (n % prime == 0) {
             n = n/prime;
         }
-        prime++;
+	if(prime!=2)
+        prime+=2;
+	 else prime++;
     }
     return primeFactors;
 }
@@ -136,8 +138,8 @@ void tenTimesMysteryVectorN(int vector[], int size) {
 
 static void three_things_i_learnt() {
     /*
-     -
-     -
-     -
+     -A recall to use for loop in different way.
+     -An efficient way to find number of prime factors for a given number.
+     -Diffent ways of function calls and usages of arrays.
      */
 }
