@@ -10,7 +10,7 @@ OUTPUT: Return top K students from array. Output need not be in decreasing order
 
 ERROR CASES: Return NULL for invalid inputs.
 
-NOTES:I tried a lot but not able to figure out the mistake. Can you please help me with solution.
+NOTES:Learned few points about pointers and return types errors.
 Problem Code :TK
 */
 
@@ -26,20 +26,14 @@ struct student ** topKStudents(struct student *students, int len, int K) {
 	if (len < 1 || K <= 0)return NULL;//return NULL;
 	struct student s;
 	s.name = (char *)malloc(sizeof(char) * 10);
-	s.name = "asdfghjk";
-	s.score = 567;
 	for (int j = len - 1;j > 0;j--)
 		for (int i = 0;i < j;i++)
-			if ((students[i].score) > students[i+1].score) {
-				s.score = students[i].score;
-				strcpy(s.name, students[i].name);
-				students[i].score = students[i+1].score;
-				strcpy(students[i].name, students[i+1].name);
-				students[i+1].score = s.score;
-				strcpy(students[i+1].name, s.name);
-
+			if ((students[i].score) < students[i+1].score) {
+				s = students[i];
+				students[i] = students[i + 1];
+				students[i + 1] = s;
 			}
-	
-	for (int i = 0;i < len - K;i++)students++;
-	return &students;
+	struct student **ans = (struct student **)malloc(sizeof(struct student*));
+	for (int i = 0;i <K;i++)ans[i] = &students[i];
+	return ans;
 }

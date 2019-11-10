@@ -73,9 +73,7 @@ namespace spec
 		TEST_METHOD(TKValue1)
 		{
 			struct student students[3] = { { "stud1", 50 }, { "stud2", 60 }, { "stud3", 70 } };
-			//Assert::AreEqual(70, 10, L"K value 1 case failed 789.", LINE_INFO());
 			struct student **result = topKStudents(students, 3, 1);
-			Assert::AreEqual(70, 10, L"K value 1 case failed 789.", LINE_INFO());
 			Assert::AreEqual(70, result[0]->score, L"K value 1 case failed.", LINE_INFO());
 		}
 
@@ -84,14 +82,11 @@ namespace spec
 			struct student students[3] = { { "stud1", 50 }, { "stud2", 60 }, { "stud3", 70 } };
 			struct student **result = topKStudents(students, 3, 2);
 			int exp[] = { 60, 70 };
-			//Assert::IsTrue(validate(exp, 2, result), L"K value 2 case failed.%d", LINE_INFO());
+			Assert::IsTrue(validate(exp, 2, result), L"K value 2 case failed.%d", LINE_INFO());
 
 			struct student students1[6] = { { "stud1", 30 }, { "stud2", 10 }, { "stud3", 60 }, { "stud4", 50 }, { "stud5", 20 }, { "stud6", 40 } };
 			struct student **result1 = topKStudents(students1, 6, 3);
 			int exp1[] = { 40, 50, 60 };
-			Assert::AreEqual(students1[0].score, ((*result1)+0)->score, L"K value 1 case failed 789.", LINE_INFO());
-			Assert::AreEqual(60, result1[1]->score, L"K value 1 case failed 789.", LINE_INFO());
-			Assert::AreEqual(70, result1[2]->score, L"K value 1 case failed 789.", LINE_INFO());
 			Assert::IsTrue(validate(exp1, 3, result1), L"K value 3 case failed.", LINE_INFO());
 		}
 
