@@ -18,11 +18,7 @@ Try to think of a optimized way , and avoid unnecessary comparisons.
 
 #include <stdio.h>
 #include<stdlib.h>
-int* nPrime(int N)
-{
-	if (N <= 1)return NULL;
-	int *prime = (int *)calloc(sizeof(int),N);
-	
+void setPrime(int *prime,int N){
 	int i = 2,j=1;
 	while(i<N){
 		j = 2;
@@ -31,6 +27,12 @@ int* nPrime(int N)
 		}i++;
 		while (prime[i] != 0 && i < N)i++;
 	}
+}
+int* nPrime(int N)
+{
+	if (N <= 1)return NULL;
+	int *prime = (int *)calloc(sizeof(int),N);
+	setPrime(prime,N);
 	int *ans = (int *)calloc(sizeof(int),N);
 	ans[0] = 2;
 	i = 3;
