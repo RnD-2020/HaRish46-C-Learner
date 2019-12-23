@@ -21,20 +21,23 @@ struct student {
 	char name[10];
 	int score;
 };
-
+void swapStudents(struct student *student1,struct student *student2){
+	if(student1==NULL||student2==NULL)return;
+	struct student s;
+	s.score = (student1)->score;
+	strcpy(s.name, (student1)->name);
+	(student1)->score = (student2)->score;
+	strcpy((student1)->name, (student2)->name);
+	(student2)->score = s.score;
+	strcpy( (student2)->name, s.name );
+}
 void * scoresDescendingSort(struct student *students, int len) {
 	if (students==NULL||len < 1)return NULL;
-	struct student s;
+	
 	for(int j=len-1;j>=0;j--)
 		for(int i=0;i<j;i++)
 			if ((students + i)->score < (students + (i + 1))->score) {
-				s.score = (students + i)->score;
-				strcpy(s.name, (students +i)->name);
-				(students + i)->score = (students + (i+1))->score;
-				strcpy((students + i)->name, (students + (i+1))->name);
-				(students + (i+1))->score = s.score;
-				strcpy( (students + (i+1))->name, s.name );
-
+				swapStudents((students + i),(students + (i+1));
 			}
 	//return ;
 }
