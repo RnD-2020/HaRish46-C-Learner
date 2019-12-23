@@ -13,8 +13,9 @@ NOTES:
 #include<stdio.h>
 
 char KthIndexFromEnd(char *str, int K) {
-	if (str == NULL||str=="")return NULL;
+	if (str == NULL||str==""||K<0)return NULL;
 	int i = 0;
 	while (str[i] != '\0')i++;
+	if(i>=K)return NULL;
 	return str[i - K-1];
 }
